@@ -1,5 +1,7 @@
 from django.shortcuts import render
 
+from django.http import Http404
+
 posts = [
     {
         'id': 0,
@@ -55,6 +57,8 @@ def post_detail(request, id):
     template = 'blog/detail.html'
     context = {'post': posts[id],
                }
+    if id > 2 or id < 0:
+        raise Http404('Page does not exist')
     return render(request, template, context)
 
 
