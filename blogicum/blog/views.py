@@ -45,6 +45,12 @@ posts = [
     },
 ]
 
+posts_dict = {
+    0: posts[0],
+    1: posts[1],
+    2: posts[2],
+}
+
 
 def index(request):
     tempalte = 'blog/index.html'
@@ -55,9 +61,9 @@ def index(request):
 
 def post_detail(request, id):
     template = 'blog/detail.html'
-    context = {'post': posts[id],
+    context = {'post': posts_dict[id],
                }
-    if id > 2 or id < 0:
+    if id > len(posts_dict) - 1:
         raise Http404('Page does not exist')
     return render(request, template, context)
 
