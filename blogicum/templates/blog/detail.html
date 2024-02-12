@@ -4,6 +4,7 @@
 {% endblock %}
 {% block main %}   
   <div class="container py-5">
-    {% include "includes/article.html" %}         
+    {% include "includes/article.html" with text=post.text %}
+    </article>
   </div>
 {% endblock %}
