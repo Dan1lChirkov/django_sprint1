@@ -57,10 +57,10 @@ def index(request):
 
 def post_detail(request, id):
     template = 'blog/detail.html'
-    context = {'post': posts_dict[id],
-               }
     if id not in posts_dict.keys():
         raise Http404('Page does not exist')
+    context = {'post': posts_dict[id],
+               }
     return render(request, template, context)
 
 
